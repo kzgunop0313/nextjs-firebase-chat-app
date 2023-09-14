@@ -7,7 +7,6 @@ import Provider from './Provider';
 import { initializeFirebaseApp } from '@/lib/firebase';
 
 const inter = Inter({ subsets: ['latin'] });
-initializeFirebaseApp();
 
 export const metadata: Metadata = {
   title: 'Create Next App',
