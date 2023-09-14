@@ -1,5 +1,6 @@
 'use client';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { FirebaseError } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
@@ -7,6 +8,8 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 import {
   Box,
   Button,
@@ -22,9 +25,6 @@ import {
   chakra,
   useToast,
 } from '@/lib/chakraui';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { initializeFirebaseApp } from '@/lib/firebase';
 
 export const signUpFormSchema = z.object({
