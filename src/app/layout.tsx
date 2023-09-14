@@ -1,8 +1,7 @@
-import { initializeFirebaseApp } from '@/lib/firebase/firebase';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { getApp } from 'firebase/app';
+import { initializeFirebaseApp } from '@/lib/firebase/firebase';
 
 const inter = Inter({ subsets: ['latin'] });
 initializeFirebaseApp();
