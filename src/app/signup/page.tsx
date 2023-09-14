@@ -1,5 +1,12 @@
 'use client';
 
+import { FirebaseError } from 'firebase/app';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  sendEmailVerification,
+} from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -15,14 +22,6 @@ import {
   useToast,
 } from '@/lib/chakraui';
 import { initializeFirebaseApp } from '@/lib/firebase';
-import { FirebaseError } from 'firebase/app';
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  sendEmailVerification,
-} from 'firebase/auth';
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
 
 export default function SignUp() {
   const [email, setEmail] = useState<string>('');
