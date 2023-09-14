@@ -1,8 +1,11 @@
+import { initializeFirebaseApp } from '@/lib/firebase/firebase';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { getApp } from 'firebase/app';
 
 const inter = Inter({ subsets: ['latin'] });
+initializeFirebaseApp();
 
 export const metadata: Metadata = {
   title: 'Create Next App',
