@@ -1,8 +1,8 @@
 'use client';
 
 import NextLink from 'next/link';
-import { Box, Flex, Heading, Button, ButtonGroup } from '@/lib/chakraui';
 import { useAuthContext } from '@/auth/AuthProvider';
+import { Box, Flex, Heading, Button, ButtonGroup } from '@/lib/chakraui';
 
 export default function Header() {
   const { user } = useAuthContext();

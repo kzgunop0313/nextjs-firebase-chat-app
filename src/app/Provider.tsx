@@ -1,7 +1,7 @@
 'use client';
 
-import { AuthProvider } from '@/auth/AuthProvider';
 import { ChakraProvider } from '@chakra-ui/react';
+import { AuthProvider } from '@/auth/AuthProvider';
 
 export default function Provider({ children }: { children: React.ReactNode }) {
   return (

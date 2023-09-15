@@ -1,5 +1,7 @@
 'use client';
 
+import type { User } from '@firebase/auth';
+import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import {
   createContext,
   ReactNode,
@@ -7,8 +9,6 @@ import {
   useEffect,
   useState,
 } from 'react';
-import type { User } from '@firebase/auth';
-import { getAuth, onAuthStateChanged } from '@firebase/auth';
 
 export type GlobalAuthState = {
   user: User | null | undefined;
