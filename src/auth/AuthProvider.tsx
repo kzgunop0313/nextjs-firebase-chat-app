@@ -1,5 +1,6 @@
 'use client';
 
+import { initializeFirebaseApp } from '@/lib/firebase';
 import type { User } from '@firebase/auth';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import {
@@ -20,10 +21,11 @@ const AuthContext = createContext<GlobalAuthState>(initialState);
 
 type Props = { children: ReactNode };
 
-export const AuthProvider = ({ children }: Props) => {
+export default function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<GlobalAuthState>(initialState);
 
   useEffect(() => {
+    initializeFirebaseApp;
     try {
       const auth = getAuth();
       return onAuthStateChanged(auth, (user) => {
@@ -38,6 +40,6 @@ export const AuthProvider = ({ children }: Props) => {
   }, []);
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
-};
+}
 
 export const useAuthContext = () => useContext(AuthContext);

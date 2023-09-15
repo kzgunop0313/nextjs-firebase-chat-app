@@ -33,7 +33,7 @@ export default function Header() {
               bg="blue.400"
               href="/signup"
               _hover={{
-                bg: 'blue.300',
+                bg: 'blue.400',
               }}
             >
               {user.displayName}さん
@@ -48,7 +48,7 @@ export default function Header() {
                 bg="blue.400"
                 href="/signup"
                 _hover={{
-                  bg: 'blue.300',
+                  bg: 'blue.400',
                 }}
               >
                 会員登録
@@ -61,7 +61,7 @@ export default function Header() {
                 bg="blue.400"
                 href="/signup"
                 _hover={{
-                  bg: 'blue.300',
+                  bg: 'blue.400',
                 }}
               >
                 ログイン

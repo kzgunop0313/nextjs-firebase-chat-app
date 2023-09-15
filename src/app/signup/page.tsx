@@ -97,10 +97,6 @@ export default function SignUp() {
     }
   };
 
-  useEffect(() => {
-    initializeFirebaseApp;
-  }, []);
-
   return (
     <Container py={14}>
       <Heading>会員登録</Heading>

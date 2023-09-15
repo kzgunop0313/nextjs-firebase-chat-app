@@ -57,21 +57,15 @@ export default function SignIn() {
         position: 'top',
       });
     } catch (error) {
-      if (error instanceof FirebaseError) {
-        toast({
-          title: 'メールアドレスまたは、パスワードが違います。',
-          status: 'error',
-          position: 'top',
-        });
-      }
+      toast({
+        title: 'エラーが発生しました。',
+        status: 'error',
+        position: 'top',
+      });
     } finally {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    initializeFirebaseApp;
-  }, []);
 
   return (
     <Container py={14}>
