@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -29,6 +30,7 @@ export const signInFormSchema = z.object({
 type SignInFormSchemaType = z.infer<typeof signInFormSchema>;
 
 export default function SignIn() {
+  const { push } = useRouter();
   const {
     register,
     handleSubmit,
@@ -54,6 +56,7 @@ export default function SignIn() {
         status: 'success',
         position: 'top',
       });
+      push('/');
     } catch (error) {
       toast({
         title: 'エラーが発生しました。',
