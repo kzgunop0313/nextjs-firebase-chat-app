@@ -1,9 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FirebaseError } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import {
@@ -21,7 +20,6 @@ import {
   chakra,
   useToast,
 } from '@/lib/chakraui';
-import { initializeFirebaseApp } from '@/lib/firebase';
 
 export const signInFormSchema = z.object({
   email: z.string().email({ message: '正しい形式で入力してください' }),
@@ -102,7 +100,7 @@ export default function SignIn() {
         </Grid>
         <Spacer height={4} aria-hidden />
         <Center>
-          <Button type="submit" isLoading={isLoading}>
+          <Button type="submit" colorScheme="green" isLoading={isLoading}>
             ログイン
           </Button>
         </Center>

@@ -1,7 +1,11 @@
+import AuthGuard from '@/auth/AuthGuard';
+
 export default function Home() {
   return (
-    <main>
-      <div>チャットアプリ</div>
-    </main>
+    <AuthGuard>
+      <main>
+        <div>チャットアプリ</div>
+      </main>
+    </AuthGuard>
   );
 }

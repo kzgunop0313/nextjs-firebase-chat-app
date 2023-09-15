@@ -31,12 +31,12 @@ export default function Header() {
               fontWeight={600}
               color="white"
               bg="blue.400"
-              href="/signup"
+              href="/profile"
               _hover={{
                 bg: 'blue.400',
               }}
             >
-              {user.displayName}さん
+              マイページ
             </Button>
           ) : (
             <ButtonGroup>
@@ -59,7 +59,7 @@ export default function Header() {
                 fontWeight={600}
                 color="white"
                 bg="blue.400"
-                href="/signup"
+                href="/signin"
                 _hover={{
                   bg: 'blue.400',
                 }}

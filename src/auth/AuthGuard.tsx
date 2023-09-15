@@ -1,13 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import type { ReactNode } from 'react';
 import { useAuthContext } from './AuthProvider';
-import { Box, Center, Flex, Spinner } from '@/lib/chakraui';
+import { Flex, Spinner } from '@/lib/chakraui';
 
-type Props = {
-  children: ReactNode;
-};
+type Props = { children: React.ReactNode };
 
 export default function AuthGuard({ children }: Props) {
   const { user } = useAuthContext();
@@ -15,7 +12,7 @@ export default function AuthGuard({ children }: Props) {
 
   if (typeof user === 'undefined') {
     return (
-      <Flex alignItems="center" justifyContent="center">
+      <Flex alignItems="center" justifyContent="center" ringColor="blue.400">
         <Spinner
           thickness="4px"
           size="xl"
@@ -31,5 +28,5 @@ export default function AuthGuard({ children }: Props) {
     return null;
   }
 
-  return <>{children}</>;
+  return children;
 }

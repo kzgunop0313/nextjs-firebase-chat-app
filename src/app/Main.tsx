@@ -1,4 +1,3 @@
-import AuthGuard from '@/auth/AuthGuard';
 import { Container } from '@/lib/chakraui';
 
 export default function Main({ children }: { children: React.ReactNode }) {
@@ -9,7 +8,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
       my="4"
       minH="calc(100vh - 115px - 2rem)"
     >
-      <AuthGuard>{children}</AuthGuard>
+      {children}
     </Container>
   );
 }
