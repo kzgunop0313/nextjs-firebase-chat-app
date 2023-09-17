@@ -8,7 +8,7 @@ import {
   sendEmailVerification,
   updateProfile,
 } from 'firebase/auth';
-import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -30,11 +30,12 @@ import {
   chakra,
   useToast,
 } from '@/lib/chakraui';
+import { storage } from '@/lib/firebase';
 
-export const signUpFormSchema = z.object({
+const signUpFormSchema = z.object({
   username: z
     .string()
-    .max(20, { message: '20文字以内で入力してください。' })
+    .max(10, { message: '10文字以内で入力してください。' })
     .min(1, { message: '名前を入力してください' }),
   email: z.string().email({ message: '正しい形式で入力してください' }),
   image: z
@@ -70,6 +71,9 @@ export default function SignUp() {
     },
   });
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const toast = useToast();
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -82,9 +86,6 @@ export default function SignUp() {
     }
   };
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const toast = useToast();
-
   const onSubmit = async (data: SignUpFormSchemaType) => {
     setIsLoading(true);
     try {
@@ -94,7 +95,6 @@ export default function SignUp() {
         data.email,
         data.password,
       );
-      const storage = getStorage();
       const storageRef = ref(
         storage,
         `profile-images/${userCredential.user.uid}.jpg`,

@@ -22,7 +22,7 @@ import {
   useToast,
 } from '@/lib/chakraui';
 
-export const signInFormSchema = z.object({
+const signInFormSchema = z.object({
   email: z.string().email({ message: '正しい形式で入力してください' }),
   password: z.string().min(1, { message: 'パスワードを入力してください' }),
 });

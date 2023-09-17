@@ -28,10 +28,10 @@ import {
   useToast,
 } from '@/lib/chakraui';
 
-export const profileFormSchema = z.object({
+const profileFormSchema = z.object({
   username: z
     .string()
-    .max(20, { message: '20文字以内で入力してください。' })
+    .max(10, { message: '10文字以内で入力してください。' })
     .min(1, { message: '名前を入力してください' }),
   image: z
     .custom<File>((value) => value)
@@ -147,7 +147,7 @@ export default function Profile() {
               </FormControl>
               <FormControl>
                 <FormLabel htmlFor="email">メールアドレス</FormLabel>
-                <Text>{user?.email}</Text>
+                {user?.email && <Text>{user.email}</Text>}
               </FormControl>
             </Box>
           </Grid>
