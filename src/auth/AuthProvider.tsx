@@ -19,7 +19,7 @@ export default function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<GlobalAuthState>(initialState);
 
   useEffect(() => {
-    initializeFirebaseApp;
+    initializeFirebaseApp();
     try {
       const auth = getAuth();
       return onAuthStateChanged(auth, (user) => {
