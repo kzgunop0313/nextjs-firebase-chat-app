@@ -36,8 +36,8 @@ export default function Chat() {
   }, [chats]);
 
   return (
-    user && (
-      <AuthGuard>
+    <AuthGuard>
+      {user && (
         <Container py={14}>
           <Heading>チャット</Heading>
           <Spacer height={4} aria-hidden />
@@ -47,6 +47,7 @@ export default function Chat() {
             gap={4}
             height={500}
             ref={messagesElementRef}
+            px={8}
             paddingBottom={8}
           >
             {chats.length > 0 ? (
@@ -74,7 +75,7 @@ export default function Chat() {
           </Flex>
           <SendMessage user={user} />
         </Container>
-      </AuthGuard>
-    )
+      )}
+    </AuthGuard>
   );
 }
