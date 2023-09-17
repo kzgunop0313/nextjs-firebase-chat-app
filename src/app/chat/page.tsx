@@ -38,7 +38,7 @@ export default function Chat() {
   return (
     <AuthGuard>
       {user && (
-        <Container py={14}>
+        <Container>
           <Heading>チャット</Heading>
           <Spacer height={4} aria-hidden />
           <Flex
