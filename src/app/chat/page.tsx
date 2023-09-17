@@ -7,7 +7,7 @@ import SendMessage from './components/SendMessage';
 import { Chat as ChatType } from './types';
 import AuthGuard from '@/auth/AuthGuard';
 import { useAuthContext } from '@/auth/AuthProvider';
-import { Container, Flex, Heading, Spacer, Spinner } from '@/lib/chakraui';
+import { Container, Flex, Spinner } from '@/lib/chakraui';
 import { db } from '@/lib/firebase';
 
 export default function Chat() {
@@ -39,8 +39,6 @@ export default function Chat() {
     <AuthGuard>
       {user && (
         <Container>
-          <Heading>チャット</Heading>
-          <Spacer height={4} aria-hidden />
           <Flex
             flexDirection="column"
             overflowY="auto"
