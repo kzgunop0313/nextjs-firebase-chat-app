@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import {
-  Box,
   Button,
   Center,
   Container,
@@ -84,32 +83,30 @@ export default function SignIn() {
       <chakra.form onSubmit={handleSubmit(onSubmit)}>
         <Spacer height={8} aria-hidden />
         <Grid gap={4}>
-          <Box display="contents">
-            <FormControl isInvalid={Boolean(errors.email)}>
-              <FormLabel htmlFor="email">メールアドレス</FormLabel>
-              <Input
-                type="email"
-                id="email"
-                placeholder="your@email.com"
-                {...register('email')}
-              />
-              <FormErrorMessage>
-                {errors.email && errors.email.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormControl isInvalid={Boolean(errors.password)}>
-              <FormLabel htmlFor="password">パスワード</FormLabel>
-              <Input
-                type="password"
-                id="password"
-                placeholder="パスワード"
-                {...register('password')}
-              />
-              <FormErrorMessage>
-                {errors.password && errors.password.message}
-              </FormErrorMessage>
-            </FormControl>
-          </Box>
+          <FormControl isInvalid={Boolean(errors.email)}>
+            <FormLabel htmlFor="email">メールアドレス</FormLabel>
+            <Input
+              type="email"
+              id="email"
+              placeholder="your@email.com"
+              {...register('email')}
+            />
+            <FormErrorMessage>
+              {errors.email && errors.email.message}
+            </FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={Boolean(errors.password)}>
+            <FormLabel htmlFor="password">パスワード</FormLabel>
+            <Input
+              type="password"
+              id="password"
+              placeholder="パスワード"
+              {...register('password')}
+            />
+            <FormErrorMessage>
+              {errors.password && errors.password.message}
+            </FormErrorMessage>
+          </FormControl>
         </Grid>
         <Spacer height={4} aria-hidden />
         <Center>

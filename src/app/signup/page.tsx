@@ -13,7 +13,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import {
-  Box,
   Button,
   Center,
   Container,
@@ -142,66 +141,64 @@ export default function SignUp() {
       <chakra.form onSubmit={handleSubmit(onSubmit)}>
         <Spacer height={8} aria-hidden />
         <Grid gap={4}>
-          <Box display="contents">
-            <FormControl isInvalid={Boolean(errors.username)}>
-              <FormLabel htmlFor="useName">ユーザー名</FormLabel>
-              <Input
-                type="text"
-                id="username"
-                placeholder="ユーザー名"
-                {...register('username')}
+          <FormControl isInvalid={Boolean(errors.username)}>
+            <FormLabel htmlFor="useName">ユーザー名</FormLabel>
+            <Input
+              type="text"
+              id="username"
+              placeholder="ユーザー名"
+              {...register('username')}
+            />
+            <FormErrorMessage>
+              {errors.username && errors.username.message}
+            </FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={Boolean(errors.username)}>
+            <FormLabel htmlFor="useName">ユーザー画像</FormLabel>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              onChange={handleImageChange}
+              accept="image/*"
+            />
+            <FormErrorMessage>
+              {errors.image && errors.image.message}
+            </FormErrorMessage>
+            <Spacer height={4} aria-hidden />
+            {imagePreview && (
+              <Image
+                src={imagePreview}
+                alt="選択された画像のプレビュー"
+                borderRadius="full"
+                boxSize="100px"
               />
-              <FormErrorMessage>
-                {errors.username && errors.username.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormControl isInvalid={Boolean(errors.username)}>
-              <FormLabel htmlFor="useName">ユーザー画像</FormLabel>
-              <input
-                type="file"
-                id="image"
-                name="image"
-                onChange={handleImageChange}
-                accept="image/*"
-              />
-              <FormErrorMessage>
-                {errors.image && errors.image.message}
-              </FormErrorMessage>
-              <Spacer height={4} aria-hidden />
-              {imagePreview && (
-                <Image
-                  src={imagePreview}
-                  alt="選択された画像のプレビュー"
-                  borderRadius="full"
-                  boxSize="100px"
-                />
-              )}
-            </FormControl>
-            <FormControl isInvalid={Boolean(errors.email)}>
-              <FormLabel htmlFor="email">メールアドレス</FormLabel>
-              <Input
-                type="email"
-                id="email"
-                placeholder="your@email.com"
-                {...register('email')}
-              />
-              <FormErrorMessage>
-                {errors.email && errors.email.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormControl isInvalid={Boolean(errors.password)}>
-              <FormLabel htmlFor="password">パスワード(8文字以上)</FormLabel>
-              <Input
-                type="password"
-                id="password"
-                placeholder="パスワード"
-                {...register('password')}
-              />
-              <FormErrorMessage>
-                {errors.password && errors.password.message}
-              </FormErrorMessage>
-            </FormControl>
-          </Box>
+            )}
+          </FormControl>
+          <FormControl isInvalid={Boolean(errors.email)}>
+            <FormLabel htmlFor="email">メールアドレス</FormLabel>
+            <Input
+              type="email"
+              id="email"
+              placeholder="your@email.com"
+              {...register('email')}
+            />
+            <FormErrorMessage>
+              {errors.email && errors.email.message}
+            </FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={Boolean(errors.password)}>
+            <FormLabel htmlFor="password">パスワード(8文字以上)</FormLabel>
+            <Input
+              type="password"
+              id="password"
+              placeholder="パスワード"
+              {...register('password')}
+            />
+            <FormErrorMessage>
+              {errors.password && errors.password.message}
+            </FormErrorMessage>
+          </FormControl>
         </Grid>
         <Spacer height={4} aria-hidden />
         <Center>
