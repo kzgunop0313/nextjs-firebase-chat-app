@@ -2,7 +2,7 @@ import { Button, Container, Link, Text, Flex } from '@/lib/chakraui';
 
 export default function Home() {
   return (
-    <Container py={14}>
+    <Container>
       <Flex flexDirection="column" gap={4}>
         <Text fontSize="xl">はじめて利用される方</Text>
         <Link href="/signup">

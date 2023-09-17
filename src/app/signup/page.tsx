@@ -137,7 +137,7 @@ export default function SignUp() {
   };
 
   return (
-    <Container py={14}>
+    <Container>
       <Heading>会員登録</Heading>
       <chakra.form onSubmit={handleSubmit(onSubmit)}>
         <Spacer height={8} aria-hidden />

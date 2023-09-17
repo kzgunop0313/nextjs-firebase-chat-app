@@ -12,7 +12,7 @@ export default function MyPage() {
 
   return (
     <AuthGuard>
-      <Container py={14}>
+      <Container>
         <Heading>プロフィール</Heading>
         <Spacer height={8} aria-hidden />
         <Profile user={user} />
