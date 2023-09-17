@@ -9,7 +9,6 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -56,7 +55,6 @@ const signUpFormSchema = z.object({
 type SignUpFormSchemaType = z.infer<typeof signUpFormSchema>;
 
 export default function SignUp() {
-  const { push } = useRouter();
   const {
     register,
     handleSubmit,
@@ -106,13 +104,14 @@ export default function SignUp() {
         displayName: data.username,
         photoURL: downloadURL,
       });
-      await sendEmailVerification(userCredential.user);
+      await sendEmailVerification(userCredential.user, {
+        url: 'https://nextjs-firebase-chat-app.vercel.app/signin',
+      });
       toast({
         title: '確認メールが送信されました。',
         status: 'success',
         position: 'top',
       });
-      push('/signin');
     } catch (error) {
       if (error instanceof FirebaseError) {
         const errorCode = error.code;
