@@ -56,7 +56,7 @@ export default function SignIn() {
         status: 'success',
         position: 'top',
       });
-      push('/');
+      push('/chat');
     } catch (error) {
       toast({
         title: 'エラーが発生しました。',

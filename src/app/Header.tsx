@@ -1,18 +1,17 @@
 'use client';
 
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { useAuthContext } from '@/auth/AuthProvider';
-import { Box, Flex, Heading, Button, ButtonGroup } from '@/lib/chakraui';
+import { Flex, Heading, Button, ButtonGroup, chakra } from '@/lib/chakraui';
 
 export default function Header() {
   const { user } = useAuthContext();
 
   return (
-    <Box as="header">
+    <chakra.header as="header" py={4}>
       <Flex
         bg="white"
-        color="gray.600"
-        minH={'60px'}
+        minH="60px"
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
@@ -22,54 +21,54 @@ export default function Header() {
       >
         <Flex flex={1} justify="space-between" maxW="5xl" mx="auto">
           <Heading as="h1" size="lg">
-            <NextLink href="/">チャットアプリ</NextLink>
+            <Link href="/chat">チャットアプリ</Link>
           </Heading>
           {user ? (
-            <Button
-              as={NextLink}
-              fontSize="sm"
-              fontWeight={600}
-              color="white"
-              bg="blue.400"
-              href="/profile"
-              _hover={{
-                bg: 'blue.400',
-              }}
-            >
-              マイページ
-            </Button>
+            <Link href="/mypage">
+              <Button
+                fontSize="sm"
+                fontWeight={600}
+                color="white"
+                bg="blue.400"
+                _hover={{
+                  bg: 'blue.400',
+                }}
+              >
+                マイページ
+              </Button>
+            </Link>
           ) : (
             <ButtonGroup>
-              <Button
-                as={NextLink}
-                fontSize="sm"
-                fontWeight={600}
-                color="white"
-                bg="blue.400"
-                href="/signup"
-                _hover={{
-                  bg: 'blue.400',
-                }}
-              >
-                会員登録
-              </Button>
-              <Button
-                as={NextLink}
-                fontSize="sm"
-                fontWeight={600}
-                color="white"
-                bg="blue.400"
-                href="/signin"
-                _hover={{
-                  bg: 'blue.400',
-                }}
-              >
-                ログイン
-              </Button>
+              <Link href="/signup">
+                <Button
+                  fontSize="sm"
+                  fontWeight={600}
+                  color="white"
+                  bg="blue.400"
+                  _hover={{
+                    bg: 'blue.400',
+                  }}
+                >
+                  会員登録
+                </Button>
+              </Link>
+              <Link href="/signin">
+                <Button
+                  fontSize="sm"
+                  fontWeight={600}
+                  color="white"
+                  bg="blue.400"
+                  _hover={{
+                    bg: 'blue.400',
+                  }}
+                >
+                  ログイン
+                </Button>
+              </Link>
             </ButtonGroup>
           )}
         </Flex>
       </Flex>
-    </Box>
+    </chakra.header>
   );
 }
