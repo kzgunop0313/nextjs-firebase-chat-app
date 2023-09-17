@@ -1,7 +1,12 @@
+'use client';
+
 import NextLink from 'next/link';
-import { Box, Flex, Heading, Button } from '@/lib/chakraui';
+import { useAuthContext } from '@/auth/AuthProvider';
+import { Box, Flex, Heading, Button, ButtonGroup } from '@/lib/chakraui';
 
 export default function Header() {
+  const { user } = useAuthContext();
+
   return (
     <Box as="header">
       <Flex
@@ -19,19 +24,50 @@ export default function Header() {
           <Heading as="h1" size="lg">
             <NextLink href="/">チャットアプリ</NextLink>
           </Heading>
-          <Button
-            as={NextLink}
-            fontSize="sm"
-            fontWeight={600}
-            color="white"
-            bg="blue.400"
-            href="/signup"
-            _hover={{
-              bg: 'blue.300',
-            }}
-          >
-            サインイン
-          </Button>
+          {user ? (
+            <Button
+              as={NextLink}
+              fontSize="sm"
+              fontWeight={600}
+              color="white"
+              bg="blue.400"
+              href="/profile"
+              _hover={{
+                bg: 'blue.400',
+              }}
+            >
+              マイページ
+            </Button>
+          ) : (
+            <ButtonGroup>
+              <Button
+                as={NextLink}
+                fontSize="sm"
+                fontWeight={600}
+                color="white"
+                bg="blue.400"
+                href="/signup"
+                _hover={{
+                  bg: 'blue.400',
+                }}
+              >
+                会員登録
+              </Button>
+              <Button
+                as={NextLink}
+                fontSize="sm"
+                fontWeight={600}
+                color="white"
+                bg="blue.400"
+                href="/signin"
+                _hover={{
+                  bg: 'blue.400',
+                }}
+              >
+                ログイン
+              </Button>
+            </ButtonGroup>
+          )}
         </Flex>
       </Flex>
     </Box>
