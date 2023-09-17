@@ -23,8 +23,8 @@ export default function AuthGuard({ children }: Props) {
     );
   }
 
-  if (user === null) {
-    push('/signin');
+  if (user === null || !user.emailVerified) {
+    push('/');
     return null;
   }
 

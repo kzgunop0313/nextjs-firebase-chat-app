@@ -50,6 +50,16 @@ export default function SignIn() {
     setIsLoading(true);
     try {
       const auth = getAuth();
+      const user = auth.currentUser;
+      if (user && !user.emailVerified) {
+        toast({
+          title: 'メールアドレスが未確認です。',
+          status: 'error',
+          position: 'top',
+        });
+        setIsLoading(false);
+        return;
+      }
       await signInWithEmailAndPassword(auth, data.email, data.password);
       toast({
         title: 'ログインしました。',

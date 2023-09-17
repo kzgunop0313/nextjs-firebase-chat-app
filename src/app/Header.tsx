@@ -21,7 +21,7 @@ export default function Header() {
           <Heading as="h1" size="lg">
             <Link href="/chat">チャットアプリ</Link>
           </Heading>
-          {user ? (
+          {user && user.emailVerified ? (
             <Link href="/mypage">
               <Button
                 fontSize="sm"

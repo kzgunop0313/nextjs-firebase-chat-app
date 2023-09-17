@@ -108,11 +108,11 @@ export default function SignUp() {
       });
       await sendEmailVerification(userCredential.user);
       toast({
-        title: 'アカウントが作成されました。',
+        title: '確認メールが送信されました。',
         status: 'success',
         position: 'top',
       });
-      push('/');
+      push('/signin');
     } catch (error) {
       if (error instanceof FirebaseError) {
         const errorCode = error.code;
