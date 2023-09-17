@@ -21,7 +21,7 @@ export default function SignOut() {
         position: 'top',
       });
       push('/');
-    } catch (e) {
+    } catch (error) {
       toast({
         title: 'エラーが発生しました。',
         status: 'error',
