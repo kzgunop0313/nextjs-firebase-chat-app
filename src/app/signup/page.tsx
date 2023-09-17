@@ -13,7 +13,6 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { IMAGE_TYPES } from '@/constants/imageType';
 import {
   Box,
   Button,
@@ -31,6 +30,8 @@ import {
   useToast,
 } from '@/lib/chakraui';
 import { storage } from '@/lib/firebase';
+
+const IMAGE_TYPES = ['image/jpeg', 'image/png'];
 
 const signUpFormSchema = z.object({
   username: z

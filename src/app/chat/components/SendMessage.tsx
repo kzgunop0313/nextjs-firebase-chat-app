@@ -2,8 +2,8 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { User } from 'firebase/auth';
-import { push, ref } from 'firebase/database';
-import React from 'react';
+import { push, ref, serverTimestamp } from 'firebase/database';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import {
@@ -39,9 +39,11 @@ export default function SendMessage({ user }: Props) {
     },
   });
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const toast = useToast();
 
   const onSubmit = async (data: SendMessageFormSchemaType) => {
+    setIsLoading(true);
     try {
       const dbRef = ref(db, 'chat');
       await push(dbRef, {
@@ -49,6 +51,7 @@ export default function SendMessage({ user }: Props) {
         uid: user.uid,
         displayName: user.displayName,
         photoURL: user.photoURL,
+        createdAt: serverTimestamp(),
       });
       setValue('message', '');
     } catch (error) {
@@ -57,6 +60,8 @@ export default function SendMessage({ user }: Props) {
         status: 'error',
         position: 'top',
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -73,7 +78,7 @@ export default function SendMessage({ user }: Props) {
           {errors.message && errors.message.message}
         </FormErrorMessage>
       </FormControl>
-      <Button type="submit" colorScheme="green">
+      <Button type="submit" colorScheme="green" isLoading={isLoading}>
         送信
       </Button>
     </chakra.form>
