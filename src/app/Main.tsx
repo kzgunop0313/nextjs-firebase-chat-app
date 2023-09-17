@@ -1,6 +1,8 @@
 import { Container } from '@/lib/chakraui';
 
-export default function Main({ children }: { children: React.ReactNode }) {
+type Props = { children: React.ReactNode };
+
+export default function Main({ children }: Props) {
   return (
     <Container
       as="main"
