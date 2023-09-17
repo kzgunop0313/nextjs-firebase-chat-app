@@ -149,7 +149,6 @@ export default function SignUp() {
                 type="text"
                 id="username"
                 placeholder="ユーザー名"
-                width="100%"
                 {...register('username')}
               />
               <FormErrorMessage>
