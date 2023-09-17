@@ -112,7 +112,7 @@ export default function SignUp() {
         status: 'success',
         position: 'top',
       });
-      push('/');
+      push('/chat');
     } catch (error) {
       if (error instanceof FirebaseError) {
         const errorCode = error.code;
