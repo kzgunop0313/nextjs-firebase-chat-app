@@ -45,7 +45,7 @@ export default function Chat() {
             gap={4}
             height={500}
             ref={messagesElementRef}
-            px={8}
+            px={2}
             paddingBottom={8}
           >
             {chats.length > 0 ? (
