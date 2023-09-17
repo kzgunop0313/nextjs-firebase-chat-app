@@ -155,7 +155,7 @@ export default function SignUp() {
           </FormControl>
           <FormControl isInvalid={Boolean(errors.username)}>
             <FormLabel htmlFor="useName">ユーザー画像</FormLabel>
-            <input
+            <Input
               type="file"
               id="image"
               name="image"
