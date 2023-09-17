@@ -40,7 +40,7 @@ const signUpFormSchema = z.object({
     .min(1, { message: '名前を入力してください' }),
   email: z.string().email({ message: '正しい形式で入力してください' }),
   image: z
-    .custom<File>((value) => value)
+    .custom<File>((value) => value, { message: '画像を選択してください' })
     .refine((file) => file.size < 500000, {
       message: 'ファイルサイズは最大5MBです',
     })
