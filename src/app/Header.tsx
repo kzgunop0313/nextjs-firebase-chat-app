@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useAuthContext } from '@/auth/AuthProvider';
+import { pagesPath } from '@/lib/$path';
 import { Flex, Heading, Button, ButtonGroup, chakra } from '@/lib/chakraui';
 
 export default function Header() {
@@ -19,10 +20,10 @@ export default function Header() {
       >
         <Flex flex={1} justify="space-between" maxW="5xl" mx="auto">
           <Heading as="h1" size="lg">
-            <Link href="/chat">チャットアプリ</Link>
+            <Link href={pagesPath.chat.$url().pathname}>チャットアプリ</Link>
           </Heading>
           {user && user.emailVerified ? (
-            <Link href="/mypage">
+            <Link href={pagesPath.mypage.$url().pathname}>
               <Button
                 fontSize="sm"
                 fontWeight={600}
@@ -37,7 +38,7 @@ export default function Header() {
             </Link>
           ) : (
             <ButtonGroup>
-              <Link href="/signup">
+              <Link href={pagesPath.signup.$url().pathname}>
                 <Button
                   fontSize="sm"
                   fontWeight={600}
@@ -50,7 +51,7 @@ export default function Header() {
                   会員登録
                 </Button>
               </Link>
-              <Link href="/signin">
+              <Link href={pagesPath.signin.$url().pathname}>
                 <Button
                   fontSize="sm"
                   fontWeight={600}
