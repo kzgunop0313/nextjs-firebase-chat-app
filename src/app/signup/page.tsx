@@ -68,6 +68,7 @@ export default function SignUp() {
       password: '',
     },
   });
+
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const toast = useToast();
