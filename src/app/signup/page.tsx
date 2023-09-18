@@ -104,7 +104,7 @@ export default function SignUp() {
         photoURL: downloadURL,
       });
       await sendEmailVerification(userCredential.user, {
-        url: 'https://nextjs-firebase-chat-app.vercel.app/signin',
+        url: 'https://nextjs-firebase-chat-app.vercel.app/chat',
       });
       toast({
         title: '確認メールが送信されました。',
