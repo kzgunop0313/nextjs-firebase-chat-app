@@ -3,5 +3,5 @@ export type Chat = {
   uid: string;
   displayName: string;
   photoURL: string;
-  createdAt: string;
+  createdAt: Date;
 };
