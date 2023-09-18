@@ -29,7 +29,6 @@ const signInFormSchema = z.object({
 type SignInFormSchemaType = z.infer<typeof signInFormSchema>;
 
 export default function SignIn() {
-  const { push } = useRouter();
   const {
     register,
     handleSubmit,
@@ -42,6 +41,7 @@ export default function SignIn() {
     },
   });
 
+  const { push } = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const toast = useToast();
 
