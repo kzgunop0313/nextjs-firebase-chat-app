@@ -10,6 +10,7 @@
 
 - Firebase Authentication
 - Firebase Realtime Database
+- Firebase Storage
 
 ### インフラ
 
