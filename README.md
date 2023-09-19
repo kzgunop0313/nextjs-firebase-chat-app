@@ -216,6 +216,56 @@ export default function AuthGuard({ children }: Props) {
 理由  
 認証しているか判定して認証していない場合はトップ画面に遷移させるAuthGuardを作成しました。これにより未ログイン状態でチャット画面やマイページ画面を閲覧出来ないようにしています。
 
+7つ目
+
+該当コード(/src/lib/chakraui/index.ts)
+
+```typescript
+'use client';
+
+export * from '@chakra-ui/react';
+```
+
+理由  
+Chakra UI のコンポーネントはClient Component でのみ動作するのですが、使用する度に"use client"を宣言するのは手間なので、まとめてChatra UI のコンポーネントを export して Client Component として使えるようにしています。
+
+8つ目
+
+該当コード(/src/app/chat/components/Message.tsx)
+
+```typescript
+export default function Message({ chat, isMyMessage }: Props) {
+  return (
+    <Flex
+      justifyContent={isMyMessage ? 'end' : 'start'}
+      flexDirection={isMyMessage ? 'row-reverse' : 'row'}
+    >
+      <Image
+        src={chat.photoURL}
+        alt="ユーザー画像"
+        borderRadius="full"
+        boxSize="50px"
+      />
+      <Box ml={2}>
+        <Flex alignItems="center" gap={2}>
+          <Text fontSize="sm">{chat.displayName}</Text>
+          <Text fontSize="xs">
+            {format(new Date(chat.createdAt), 'yyyy/MM/dd HH:mm')}
+          </Text>
+        </Flex>
+        <Text bgColor="gray.200" rounded="md" px={2} py={1}>
+          {chat.message}
+        </Text>
+      </Box>
+    </Flex>
+  );
+}
+
+```
+
+理由  
+自分の送信したメッセージは右側、自分以外の人が送信したメッセージは左側に表示することによってLINEライクなUIにしました。
+
 ### どのような拡張性を想定し、何をもって備えていますか？
 
 1. ReactHookFormとZodを使用して、フォームを作成しているので仮に将来的にフォームの項目が増えたり、バリデーションを変更したい場合などに容易に対応することが出来ます。
