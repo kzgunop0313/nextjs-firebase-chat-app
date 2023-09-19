@@ -248,7 +248,11 @@ export default function Message({ chat, isMyMessage }: Props) {
         boxSize="50px"
       />
       <Box ml={2}>
-        <Flex alignItems="center" gap={2}>
+        <Flex
+          alignItems="center"
+          justifyContent={isMyMessage ? 'end' : 'start'}
+          gap={2}
+        >
           <Text fontSize="sm">{chat.displayName}</Text>
           <Text fontSize="xs">
             {format(new Date(chat.createdAt), 'yyyy/MM/dd HH:mm')}
